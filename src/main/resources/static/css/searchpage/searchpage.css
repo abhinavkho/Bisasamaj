@@ -1,0 +1,121 @@
+.resultbox {
+	border: none;
+	font-family: system-ui;
+	font-size: 20px;
+}
+
+.image_set {
+	width: 200px;
+	height: 200px;
+	border: 3px solid red;
+	border-color: red;
+	border-radius: 10px;
+}
+
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 8;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+
+}
+  
+  * {
+	box-sizing: border-box;
+}
+
+.column {
+	float: left;
+	padding: 10px;
+}
+
+.left, .right {
+	width: 25%;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+
+.middle {
+	width: 50%;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+}
+
+.row:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+
+.sideheader{
+
+background-color: rebeccapurple;
+    border-radius: 5px;
+    font-size: 20px;
+    height: 40px;
+    color: white;
+    text-align: center;
+}
+
+#modalbody{
+	overflow: auto;
+}
+
+
+.userimages{
+	width: 498px;
+}
+
+
+
+.searchaddverimg
+{
+	padding:2%;
+	height: 280px;
+	width : 100%;
+}
+
+#searchLoader
+{
+	display:none;
+}
+
+
+.imageWidth{
+	    width: 300px;
+}

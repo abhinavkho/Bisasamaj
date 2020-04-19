@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Create user</title>
+<link rel="stylesheet" type="text/css" href="css/createuser/createuser.css">
+<script type="text/javascript" src="js/createuser/createuser.js"></script>
+<link rel="stylesheet" type="text/css"	href="css/bootstrap.min-4.3.1/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/global.css">
+<script type="text/javascript" src="js/jquery/jquery-3.4.1.js"></script>
+<script type="text/javascript" src="js/bootstrap.min/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/global.js"></script>
+</head>
+<body>
+	<div id="bodydiv">
+	<span id="newheader"></span>
+	<span th:replace="header"></span><br><br>  
+    
+	<div id="formdiv">
+					<h2 class="title">Create User</h2>
+					<form method="POST" id="createuserform">
+
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<label for="firstName">first name  <span class="red">*</span></label>
+							 <input	class="form-control fieldui" type="text" name="firstName" id="firstName"><span class="red" id="firstName_err"></span>
+						</div>
+						<div class="form-group col-md-6">
+							<label for="lastName">last name  <span class="red">*</span> </label> 
+							 <input	class="form-control fieldui" type="text" name="lastName" id="lastName"><span class="red" id="lastName_err"></span>
+						</div>
+					</div>
+
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<label for="emailId">Email  <span class="red">*</span> </label> 
+							<input	class="form-control fieldui" type="email" name="emailId" id="emailId"><span class="red" id="emailId_err"></span>
+						</div>
+						<div class="form-group col-md-6">
+							<label for="contactNumber">Phone Number </label> 
+							<input	class="form-control fieldui" type="number" name="contactNumber" id="contactNumber" onkeydown="javascript: return event.keyCode == 69 ? false : true" ><span class="red" id="contactNumber_err"></span>
+						</div>
+					</div>
+					
+					
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<label for="userId">Username  <span class="red">*</span> </label> 
+							<input	class="form-control fieldui" type="text" name="userId" id="userId"><span class="red" id="userId_err"></span>
+						</div>
+						<div class="form-group col-md-6">
+							<label for="height">Height </label> 
+							<input	class="form-control fieldui" type="text" name="height" id="height">
+						</div>
+					</div>
+
+
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<label for="dob">Birthday <span class="red">*</span>
+							</label> <input class="form-control fieldui" type="date" name="dob"
+								id="dob"> <span class="red" id="dob_err"></span>
+						</div>
+						<div class="form-group col-md-6">
+							<label for="height">Gender </label>
+							<div class="form-check">
+								<input class="form-check-input gender" type="radio" name="gender"  id="male" value="M" checked>
+								 <label class="form-check-label" for="male"> Male </label>
+							</div>
+							<div class="form-check">
+								<input class="form-check-input gender"  type="radio" name="gender" id="female" value="F" >
+								 <label	class="form-check-label" for="female"> female </label>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<label for="colour">Complexion </label> <input
+								class="form-control fieldui" type="text" name="colour" id="colour">
+						</div>
+						<div class="form-group col-md-6">
+							<label for="caste">Caste </label> <input
+								class="form-control fieldui" type="text" name="caste" id="caste">
+						</div>
+					</div>
+					
+					
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<label for="placeOfBirth">Birth place </label> <input
+								class="form-control fieldui"  type="text" name="placeOfBirth" id="placeOfBirth">
+						</div>
+						<div class="form-group col-md-6">
+							<label for="time">Birth time </label> <input
+								class="form-control fieldui" type="time" name="time" id="time">
+						</div>
+					</div>
+
+
+				<div class="form-row">
+					<div class="form-group col-md-12">
+						<label for="gotra">Gotra</label> <select class="gotra" id="gotra"
+							name="gotra">
+							<option></option>
+							<option>Subject 1</option>
+							<option>Subject 2</option>
+							<option>Subject 3</option>
+						</select>
+					</div>
+				</div>
+
+			<div class="form-row">
+				<div class="form-group col-md-12">
+					<label class="currentAddress">Current Address</label>
+					<textarea class="txtarea form-control" id="currentAddress"
+						name="currentAddress"></textarea>
+				</div>
+			</div>
+			
+			<div class="form-row">
+				<div class="form-group col-md-12">
+					<label class="permanentAddress">Parmanent Address</label>
+					<textarea class="txtarea form-control" id="permanentAddress" name="permanentAddress" ></textarea>
+				</div>
+			</div>
+			
+			<div class="form-row">
+				<div class="form-group col-md-12">
+					<label class="highestEducation">Education</label>
+					<textarea class="txtarea form-control" id="highestEducation" name="highestEducation" ></textarea>
+				</div>
+			</div>
+			
+			<div class="form-row">
+				<div class="form-group col-md-12">
+					<label class="occupation">Ocupation</label>
+					<textarea class="txtarea form-control" id="occupation" name="occupation" ></textarea>
+				</div>
+			</div>
+			
+			<div class="form-row">
+				<div class="form-group col-md-12">
+					<label class="familyDetails">Family detail</label>
+					<textarea class="txtarea form-control" id="familyDetails" name="familyDetails" ></textarea>
+				</div>
+			</div>
+			<input type="button" class="btn btn-primary btnsubmit" disabled id="submituser" value="Submit" >
+		</form>
+	</div>
+
+	<div class="modal fade" id="successmsgmodal" tabindex="-1"
+		role="dialog" aria-labelledby="exampleModalCenterTitle"
+		aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body" id="modalbody">
+					<span id="successmsg"></span>
+					<div class="modal-footer"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<br><br>
+	<span th:replace="footer"></span>
+	</div>
+	<span th:replace="loader"></span>
+</body>
+</html>

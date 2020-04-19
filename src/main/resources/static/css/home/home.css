@@ -1,0 +1,38 @@
+.avtar{
+	width: 250px;
+    border-radius: 50%;
+}
+
+
+/* slider */
+
+#slidershiftcss{
+	width: 70%;
+    position: relative;
+    left: 15%;
+    padding-top : 15px;
+}
+
+.sliderimage{
+	height: 450px;
+}
+   
+#homeadddiv{
+	
+	padding: 5%;
+    
+}
+
+.homeaddimg
+{
+	padding:1%;
+	height :250px;
+	width : 250px;
+}
+
+body{
+	 background-image: linear-gradient(to bottom right, red, yellow);
+}
+
+
+

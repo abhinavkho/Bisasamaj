@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Search page</title>
+<link rel="stylesheet" type="text/css"	href="css/bootstrap.min-4.3.1/bootstrap.min.css">
+<link rel="stylesheet" type="text/css"	href="css/searchpage/searchpage.css">
+<link rel="stylesheet" type="text/css" href="css/global.css">
+<script type="text/javascript" src="js/searchpage/searchpage.js"></script>
+<script type="text/javascript" src="js/jquery/jquery-3.4.1.js"></script>
+<link rel="stylesheet" type="text/css"	href="css/font-awesome.min/font-awesome.min.css">
+<script type="text/javascript" src="js/bootstrap.min/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/global.js"></script>
+
+</head>
+<body>
+<div id="bodydiv">
+	<span id="newheader"></span>
+	<span th:replace="header"></span>
+	<br>
+	<br>
+
+	<div class="row">
+		<div class="column left">
+			<span id="filterbar">
+				<form method="post" action="searchFilterResult" class="resultbox shadow-sm p-3 mb-5 bg-blue rounded" id="searchFilterResultform">
+					<div class="sideheader">Search filter</div><br>
+					<div class="form-group">
+						<input type="text" class="form-control" id="firstName"
+							placeholder="First name" name="firstName" >
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control" id="lastName"
+							placeholder="Last name" name="lastName"  >
+					</div>
+					<div class="form-group">
+					<label for="age">Age : <span id="agenumber"></span></label> 
+						 <input type="range" class="form-control-range custom-range" id="age" name="age" >
+					</div>
+					<div class="form-group">
+						<label for="caste">Caste : </label> <select class="form-control"
+							id="caste" name="caste">
+							<option></option>
+							<option value="1">1</option>
+							<option>2</option>
+							<option>3</option>
+							<option>4</option>
+							<option>5</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="gotra">Gotra : </label> <select class="form-control"
+							id="gotra" name="gotra">
+							<option></option>
+							<option>1</option>
+							<option>2</option>
+							<option>3</option>
+							<option>4</option>
+							<option>5</option>
+						</select>
+					</div>
+					<input type="hidden" name="gender" th:value="${gender}" id="gender">
+					<button type="button" class="btn btn-primary" name="btn" value="btn" id="filtersearchbtn">Submit</button>
+				</form>
+				<hr>
+			</span>
+		</div>
+		<div class="column middle" id="searchresultdiv">
+			<span th:each="data, iterstat: ${userDetail}">
+				<table style="width: 100%" class="resultbox shadow-sm p-3 mb-5 bg-blue rounded">
+					<tr>
+						<td rowspan="5" class="imageWidth"><img th:src="@{${data.get('displayPic')}}"	alt="no image" class="image_set" th:onclick="|loadFullProfile('${data.get('id')}')|" ><input type="hidden" id="userid" th:value="${data.get('id')}"></td>
+						<td><span th:text="${data.get('firstName')}"> </span> <span
+							th:text="${data.get('lastName')}"> </span></td>
+					</tr>
+					<tr>
+						<td>DOB : <span th:text="${data.get('dob')}"></span></td>
+					</tr>
+					<tr>
+						<td>Contact Number : <span
+							th:text="${data.get('contactNumber')}"></span></td>
+					</tr>
+					<tr>
+						<td>Gotra : <span th:text="${data.get('gotra')}"></span></td>
+					</tr>
+				</table>
+			</span>
+			<h2 th:if="${userDetail.isEmpty()}" class="text-center" ><b> Not data found </b></h2>
+				<div class="d-flex justify-content-center " >
+					<div class="spinner-border" role="status" id="searchLoader">
+						<span class="sr-only">Loading...</span>
+					</div>
+				</div>
+			</div>
+		<div class="column right">
+			<h2 class="sideheader">Advertisement</h2>
+				<span th:each="i :${#numbers.sequence( 1, 5)}" >
+					<table>
+						<tbody>
+							<tr>
+								<td><img alt="" class="d-inline-block align-top searchaddverimg"
+									src="images/groom.jpg"></td>
+							</tr>
+							<tr>
+								<th>bjhdkfj</th>
+							</tr>
+						</tbody>
+					</table>
+				</span>
+		</div>
+	</div>
+	
+<!-- Modal -->
+<div class="modal fade" id="fullprofilemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="fullprofilemodaltitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="modalbody" >
+					<div style="text-align: right;" class="red">
+						<span id="download"></span>  <span id="email" onclick="email()">Email</span>
+					</div>
+					<input type="hidden" id="inputhiddenUserId">
+					<table style="width: 100%">
+						<tr>
+							<th>Name</th>
+							<td ><span id="firstName_mdl"></span> <span id="lastName_mdl"></span></td>
+						</tr>
+						<tr>
+							<th>Contact Number</th>
+							<td id="contactNumber_mdl"></td>
+						</tr>
+						<tr>
+							<th>Email id</th>
+							<td id="emailId_mdl"></td>
+						</tr>
+						<tr>
+							<th>Height</th>
+							<td id="height_mdl"></td>
+						</tr>
+						<tr>
+							<th>Date of Birth</th>
+							<td id="dob_mdl"></td>
+						</tr>
+						<tr>
+							<th>Gender</th>
+							<td id="gender_mdl"></td>
+						</tr>
+						<tr>
+							<th>Colour</th>
+							<td id="colour_mdl"></td>
+						</tr>
+						<tr>
+							<th>Caste</th>
+							<td id="caste_mdl"></td>
+						</tr>
+						<tr>
+							<th>Birth place</th>
+							<td id="placeOfBirth_mdl"></td>
+						</tr>
+						<tr>
+							<th>Birth time</th>
+							<td id="time_mdl"></td>
+						</tr>
+						<tr>
+							<th>Gotra</th>
+							<td id="gotra_mdl"></td>
+						</tr>
+						<tr>
+							<th>Current Address</th>
+							<td id="currentAddress_mdl"></td>
+						</tr>
+						<tr>
+							<th>Parmanent Address</th>
+							<td id="permanentAddress_mdl"></td>
+						</tr>
+						<tr>
+							<th>Education</th>
+							<td id="highestEducation_mdl"></td>
+						</tr>
+						<tr>
+							<th>Occupation</th>
+							<td id="occupation_mdl"></td>
+						</tr>
+						<tr>
+							<th>Family Details</th>
+							<td id="familyDetails_mdl"></td>
+						</tr>
+					</table>
+					
+				</div>
+				<br>
+				<div id="userimages"></div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
+
+ <div class="modal" id="messageModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Message</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+         <span id="messageModalBody"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<br><br>
+<span th:replace="footer"></span>
+
+</div>
+<script th:inline="javascript">
+var searchType = [[${type}]];
+var totalResult= [[${totalResult}]];
+var searchfilterData = [[${searchfilter}]]
+</script>
+
+<span th:replace="loader"></span>
+</body>
+</html>

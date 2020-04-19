@@ -1,0 +1,28 @@
+
+<div th:fargment="header" id="mainheader">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
+        <a href="#"> <img th:src="@{${user.displayPic}}" width="60" height="60"	class="d-inline-block align-top" alt="no image"></a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav">
+            	<span th:if="${user.isAdmin}"><a class="nav-item nav-link active makecursor" id="createuser">Create User</a> </span>
+            	<span th:if="${user.isAdmin}"><a class="nav-item nav-link active makecursor" id="createadvertise">Create Advertise</a> </span>
+                <a id="home" class="nav-item nav-link active makecursor">Home</a>
+                <a id="editviewuser" class="nav-item nav-link active makecursor">View Profile</a>
+                <a id="contactus" class="nav-item nav-link active makecursor">Contact</a>
+                <a id="logout" class="nav-item nav-link active makecursor" >logout</a>
+            </div>
+			<div class="navbar-nav ml-auto">
+				<form class="form-inline ml-auto" action="searchpage" method="post" id="searchpageform">
+					<select class="form-control mr-sm-2" style="width: 150px;"	id="gender" name="gender">
+							<option value="M">Male</option>
+							<option value="F">Female</option>
+						</select>
+					<button type="button" class="btn btn-outline-light" id="searchbutton">Search</button>
+				</form>
+			</div>
+		</div>
+    </nav> 
+</div>

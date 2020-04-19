@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>login</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min-4.3.1/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/login/login.css">
+<link rel="stylesheet" type="text/css" href="css/global.css">
+<script type="text/javascript" src="js/login.js"></script>
+<script type="text/javascript" src="js/jquery/jquery-3.4.1.js"></script>
+</head>
+<body>
+	<video autoplay muted loop id="loginvedio">
+		<source src="video/login_video.mp4" type="video/mp4">
+	</video>
+		<div id="loginformdiv">
+			<div id="loginheader"> Bisa khadayte </div><br>
+			<form class="" action="userlogin" method="post" id="loginform" name="loginform">
+				<div class="form-group">
+					<input  type="text" name="username" id="username" placeholder="username or email" class="form-control">
+				</div>
+				<div class="form-group" >
+					<input type="password" name="password" id="password" placeholder="password" class="form-control"> 
+				</div>
+				<div class="form-group ">
+					<input type=button class="btn btn-primary"   value="Sign In" id="signinbtn">
+				</div>
+				<div class="textcenter">
+					<a>Forgot password</a>
+				</div>
+				<div class="textcenter" th:text="${errorMsg}">
+				</div>
+			</form>
+		</div><br><br>
+</body>
+</html>

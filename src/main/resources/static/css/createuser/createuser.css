@@ -1,0 +1,50 @@
+.txtarea{
+	margin: 0px;
+    width: 80%;
+    height: 89px;
+}
+
+
+.gotra{
+   width: 100%;
+    background: #fafafa;
+    height: 50px;
+    border-radius: 5px;
+    box-shadow: inset 0 1px 3px 0 rgba(0,0,0,.08);
+}
+
+.usercreateheader{
+	width: 80px;
+    border-radius: 50%;
+}
+
+.red {
+    color: red;
+}
+
+.btnsubmit{
+	background: #4272d7;
+    border-radius: 5px;
+    height: 50px;
+    width: 150px;
+	font-size: 18px;
+    color: #fff;
+}
+
+.fieldui{
+	background: #fafafa;
+    border-radius: 5px;
+    height: 45px;
+}
+
+#formdiv{    
+    width: 50%;
+    padding: 20px;
+    background-color: rebeccapurple;
+    position: relative;
+    left: 25%;
+    top: 20%;
+    border-radius:5px;
+    color: white;
+}
+	

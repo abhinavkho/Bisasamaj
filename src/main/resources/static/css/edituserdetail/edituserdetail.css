@@ -1,0 +1,100 @@
+.fieldborder{
+	border: 0px ;
+    border-bottom: 1px solid rebeccapurple;
+    font: italic bold 12px/30px Georgia, serif;
+}
+.lableform{
+	 font: italic bold 12px/30px Georgia, serif;
+}
+/* font-weight-bold"  */
+
+ * {
+	box-sizing: border-box;
+}
+
+.column {
+	float: left;
+	padding: 10px;
+}
+
+.left, .right {
+	width: 25%;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+
+.middle {
+	width: 48%;
+    border: 4px solid rebeccapurple;
+    border-radius : 20px;
+    box-shadow: 5px 10px rebeccapurple;
+    font-size: 15px;
+}
+
+.row:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+#editform{
+	padding-left: 80px;
+    padding-top: 40px;
+    padding-bottom: 100px;
+    pointer-events:none;
+    opacity : 0.5;
+	
+}
+
+
+#editformheader{
+
+background-color: rebeccapurple;
+    border-radius: 5px;
+    font-size: 50px;
+    height: 70px;
+    color: white;
+    text-align: center;
+    
+}
+
+.sideheader{
+	
+	background-color: rebeccapurple;
+    border-radius: 5px;
+    font-size: 20px;
+    height: 40px;
+    color: white;
+    text-align: center;
+}
+
+#fileupload{
+    border: 2px solid rebeccapurple;
+    border-radius: 5px;
+    width: 100%;
+}
+
+
+.userpic{
+    padding-top: 20px;
+    border-radius: 5px;
+    width : 100%;
+    height: 280px;
+	
+}
+
+.close{
+	background-color: gray;
+	position: relative;
+	top:20px;
+	right:6px;
+}
+
+
+.editaddverimg{
+	
+	padding:2%;
+	height: 280px;
+	width : 100%;
+}

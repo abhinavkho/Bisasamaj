@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>View user details</title>
+<link rel="stylesheet" type="text/css"	href="css/bootstrap.min-4.3.1/bootstrap.min.css">
+<script type="text/javascript" src="js/jquery/jquery-3.4.1.js"></script>
+<link rel="stylesheet" type="text/css"	href="css/edituserdetail/edituserdetail.css">
+<link rel="stylesheet" type="text/css"	href="css/font-awesome.min/font-awesome.min.css">
+<link rel="stylesheet" type="text/css"	href="css/global.css">
+<script type="text/javascript" src="js/edituserdetail/edituserdetail.js"></script>
+<script type="text/javascript" src="js/jquery/jquery-3.4.1.js"></script>
+<script type="text/javascript" src="js/global.js"></script>
+<script type="text/javascript" src="js/bootstrap.min/bootstrap.min.js"></script>
+</head>
+<body>
+	<div id="bodydiv">
+	<span id="newheader"></span>
+	<span th:replace="header"></span>
+	<br><br>
+	
+	<div class="row">
+		<div class="column left">
+			<h2 class="sideheader">Photos</h2>
+			<form enctype="multipart/form-data" id="fileuploadform" method="post"
+				action="uploadfile">
+				<div id="fileuploaddiv">
+					<input type="file" class="" id="fileupload" name="fileupload"><span
+						class="red" id="fileupload_err"></span> 
+				</div>
+				<br>
+			</form>
+			<form id="deletephoto" method="post" action="deletephoto">
+				<input type="hidden" name="picname" id="picname">
+			</form>
+
+			<input type="button" class=" btn btn-primary" id="submitphoto"	value="Upload">
+			<br>
+			<div th:each="fileName : ${filesName}">
+					<span class="close" th:onclick="|showCross('@{${fileName}}')|"> X</span> 
+					<img th:src="@{${fileName}}" width="120" height="120" class="userpic">
+			</div>
+		</div>
+		<div class="column middle">
+		
+		<div id="editformheader">User details</div>
+			<div style="text-align: right;" class="red">
+				<input type="checkbox" class="custom-control-input" id="editformbtn" name="editformbtn">
+				 <label class="custom-control-label" for="editformbtn">Edit</label>
+			</div>
+			<form id="editform">
+
+		<div class="form-group row">
+			<label for="firstName" class="col-sm-2 col-form-label lableform">First name<span class="red">*</span></label>
+			<div class="col-sm-6">
+				<input type="text" class="form-control fieldborder  " id="firstName" th:field="*{user.firstName}"><span class="red" id="firstName_err"></span>
+			</div>
+		</div>
+		
+		<div class="form-group row">
+			<label for="lastName" class="col-sm-2 col-form-label lableform">Last name<span class="red">*</span></label>
+			<div class="col-sm-6">
+				<input type="text" class="form-control fieldborder  " id="lastName" th:field="*{user.lastName}"><span class="red" id="lastName_err"></span>
+			</div>
+		</div>
+		
+		<div class="form-group row">
+			<label for="contactNumber" class="col-sm-2 col-form-label lableform">Phone number</label>
+			<div class="col-sm-6">
+				<input type="number" class="form-control fieldborder  " id="contactNumber" th:field="*{user.contactNumber}" onkeydown="javascript: return event.keyCode == 69 ? false : true"><span class="red" id="contactNumber_err"></span>
+			</div>
+		</div>
+		
+		<div class="form-group row">
+			<label for="height" class="col-sm-2 col-form-label lableform">Height</label>
+			<div class="col-sm-6">
+				<input type="text" class="form-control fieldborder  " id="height" th:field="*{user.height}">
+			</div>
+		</div>
+		
+		
+		<div class="form-group row">
+			<label for="dob" class="col-sm-2 col-form-label lableform">Birthday<span class="red">*</span></label>
+			<div class="col-sm-6">
+				<input type="date" class="form-control fieldborder  " id="dob" th:field="*{user.dob}"><span class="red" id="dob_err"></span>
+			</div>
+		</div>
+		
+		
+		<div class="form-group row">
+			<label for="dob" class="col-sm-2 col-form-label lableform">Gender<span class="red">*</span></label>
+			<div class="col-sm-6">
+					<div class="form-check">
+						<input class="form-check-input" type="radio" name="gender" id="male" value="M" th:checked="${gender == 'M'}" > <label
+							class="form-check-label" for="male"> Male </label>
+					</div>
+					<div class="form-check">
+						<input class="form-check-input" type="radio" name="gender" id="female" value="F" th:checked="${gender == 'F'}" > <label
+							class="form-check-label" for="female"> female
+						</label>
+					</div>
+				</div>
+		</div>
+		
+		<div class="form-group row">
+			<label for="colour" class="col-sm-2 col-form-label lableform">Colour</label>
+			<div class="col-sm-6">
+				<input type="text" class="form-control fieldborder  " id="colour" th:field="*{user.colour}">
+			</div>
+		</div>
+		
+		
+		<div class="form-group row">
+			<label for="caste" class="col-sm-2 col-form-label lableform">Caste<span class="red">*</span></label>
+			<div class="col-sm-6">
+				<input type="text" class="form-control fieldborder  " id="caste" th:field="*{user.caste}">
+			</div>
+		</div>
+		
+		
+		<div class="form-group row">
+			<label for="placeOfBirth" class="col-sm-2 col-form-label lableform">Birth place</label>
+			<div class="col-sm-6">
+				<input type="text" class="form-control fieldborder  " id="placeOfBirth" th:field="*{user.placeOfBirth}">
+			</div>
+		</div>
+		
+		
+		<div class="form-group row">
+			<label for="time" class="col-sm-2 col-form-label lableform">Birth Time</label>
+			<div class="col-sm-6">
+				<input type="time" class="form-control fieldborder  " id="time" th:field="*{user.time}" >
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<label for="gotra" class="col-sm-2 col-form-label lableform">Gotra</label>
+			<div class="col-sm-6">
+				<select class="form-control fieldborder"  id="gotra" th:field="*{user.gotra}">
+					<option value="1">1</option>
+				</select>
+			</div>
+		</div>
+		
+		<div class="form-group row">
+			<label for="displayPic" class="col-sm-2 col-form-label lableform">Display Picture</label>
+			<div class="col-sm-6">
+				<select class="form-control fieldborder"  id="displayPic" >
+					<option></option>
+					<span th:each="data: ${imagePathListMap}">
+						<span th:switch="*{user.displayPic}==${data.value} ? ${true}: ${false}">
+							<span th:case="${false}"><option th:value="${data.value}" th:text="${data.key}"></option></span> 
+							<span th:case="${true}"><option th:value="${data.value}" th:text="${data.key}" selected ></option></span> 
+						</span>
+					</span>
+				</select>
+			</div>
+		</div>
+		
+		<div class="form-group row">
+			<label for="currentAddress" class="col-sm-2 col-form-label lableform">Current Address</label>
+			<div class="col-sm-6">
+				<textarea class="form-control fieldborder  " id="currentAddress" th:field="*{user.currentAddress}"></textarea>
+			</div>
+		</div>
+		
+		<div class="form-group row">
+			<label for="permanentAddress" class="col-sm-2 col-form-label lableform">Parmanent Address</label>
+			<div class="col-sm-6">
+				<textarea class="form-control fieldborder  " id="permanentAddress" th:field="*{user.permanentAddress}" ></textarea>
+			</div>
+		</div>
+		
+		<div class="form-group row">
+			<label for="highestEducation" class="col-sm-2 col-form-label lableform">Education</label>
+			<div class="col-sm-6">
+				<textarea class="form-control fieldborder  " id="highestEducation" th:field="*{user.highestEducation}" ></textarea>
+			</div>
+		</div>
+		
+		<div class="form-group row">
+			<label for="occupation" class="col-sm-2 col-form-label lableform">Occupation</label>
+			<div class="col-sm-6">
+				<textarea class="form-control fieldborder  " id="occupation"  th:field="*{user.occupation}"></textarea>
+			</div>
+		</div>
+		
+		<div class="form-group row">
+			<label for="familyDetails" class="col-sm-2 col-form-label lableform">Family details</label>
+			<div class="col-sm-6">
+				<textarea class="form-control fieldborder  " id="familyDetails" th:field="*{user.familyDetails}" ></textarea>
+			</div>
+		</div>
+		
+		<input type="button" class=" btn btn-primary  btn-lg"   id="submituser" value="Update">
+	</form>
+		</div>
+		<div class="column right">
+			<h2 class="sideheader">Advertisement</h2>
+				<span th:each="i :${#numbers.sequence( 1, 5)}" >
+					<table>
+						<tbody>
+							<tr>
+								<td><img alt="" class="d-inline-block align-top editaddverimg"
+									src="images/groom.jpg"></td>
+							</tr>
+							<tr>
+								<th>bjhdkfj</th>
+							</tr>
+						</tbody>
+					</table>
+				</span>
+		</div>
+	</div>
+
+	<div class="modal fade" id="successmsgmodal" tabindex="-1"
+		role="dialog" aria-labelledby="exampleModalCenterTitle"
+		aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body" id="modalbody">
+						<span id="successmsg"></span>
+					<div class="modal-footer"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+<br><br>
+<span th:replace="footer"></span>
+</div>
+<span th:replace="loader"></span>
+
+<script th:inline="javascript">
+var numberofImages=[[${#lists.size(filesName)}]];
+</script>
+</body>
+</html>
