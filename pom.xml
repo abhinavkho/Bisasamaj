@@ -11,7 +11,7 @@
 	<groupId>com.bisa</groupId>
 	<artifactId>Matrimonial</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>BisaKhadayate-2</name>
+	<name>Bisasamaj</name>
 	<description>project for Spring Boot</description>
 
 	<properties>
